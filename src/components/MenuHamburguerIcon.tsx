@@ -27,7 +27,7 @@ const Button = styled.button<ButtonProps>`
   border-radius: 100%;
   border: none;
 
-  @media ${device.laptop} {
+  @media ${device.tablet} {
     display: block;
   }
   z-index: 100;

@@ -12,18 +12,13 @@ interface NavProps {
   $isActive: boolean
 }
 
+interface NavMenuProps {
+  $isActive: boolean
+}
+
 const surge = keyframes`
   0% { transform: scaleX(0) }
   100% { transform: scaleX(1) }
-`
-
-const menuSurge = keyframes`
-  0% {
-    border-radius: 100%;
-  }
-  100% {
-    border-radius: 0;
-  }
 `
 
 const LogoImg = styled.div`
@@ -62,22 +57,23 @@ const HeaderContent = styled.header`
   align-items: center;
   justify-content: space-between;
 `
-const Nav = styled.nav<NavProps>`
-  display: flex;
-  width: ${props => props.$isActive ? '100%' : '0'};
-  height: ${props => props.$isActive ? '100%' : '0'};
-  animation: ${menuSurge} 0.5s ease-in;
-  transition: 0.5s;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  background-color: #000000;
+const Nav = styled.nav<NavProps>`  
+  @media (${device.tablet}) {
+    width: ${props => props.$isActive ? '100%' : '0'};
+    height: 100%;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    background-color: #000000;
+  }
 `
 
-const NavMenu = styled.ul`
+const NavMenu = styled.ul<NavMenuProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +81,15 @@ const NavMenu = styled.ul`
   gap: 48px;
 
   @media ${device.laptop} {
-    display: none;
+    gap: 24px;
+  }
+  
+  @media ${device.tablet} {
+    display: ${props => props.$isActive ? 'flex' : 'none'};
+    flex-direction: column;
+    background-color: pink;
+    max-height: 80%;
+    gap: 0;
   }
 `
 const NavItem = styled.li<NavItemProps>`  
@@ -103,6 +107,10 @@ const NavItem = styled.li<NavItemProps>`
     transform-origin: 0 50%;
     transition: transform .3s cubic-bezier(.86, 0, .07, 1);
     animation: ${surge} 0.3s ease-in;
+  }
+
+  @media ${device.tablet} {
+    flex: 1;
   }
 `
 
@@ -148,7 +156,7 @@ export default function Header() {
         <VerifiedIcon width={16} height={16} />
       </LogoContainer>
       <Nav $isActive={menuActive}>
-        <NavMenu>
+        <NavMenu $isActive={menuActive}>
           <NavItem $isActive={true}>
             <NavLink>
               <Bold>
