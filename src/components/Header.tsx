@@ -1,6 +1,8 @@
 import { useState } from 'react'
+
 import styled, { keyframes } from 'styled-components'
 import { device } from '../device'
+
 import { VerifiedIcon } from './Icons'
 import MenuHamburguerIcon from './MenuHamburguerIcon'
 
@@ -87,7 +89,6 @@ const NavMenu = styled.ul<NavMenuProps>`
   @media ${device.tablet} {
     display: ${props => props.$isActive ? 'flex' : 'none'};
     flex-direction: column;
-    background-color: pink;
     max-height: 80%;
     gap: 0;
   }
@@ -111,6 +112,16 @@ const NavItem = styled.li<NavItemProps>`
 
   @media ${device.tablet} {
     flex: 1;
+    width: 100%;
+    padding: 0 15%;
+
+    &:after {
+      animation: none;
+      left: 0;
+      right: 70%;
+      height: 10px;
+      bottom: 4px;
+    }
   }
 `
 
@@ -132,11 +143,33 @@ const NavLink = styled.a`
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+
+  @media ${device.tablet} {
+    justify-content: start;
+    align-items: end;
+    padding: 24px;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: ${props => props.theme.fonts.playFair};
+    text-transform: capitalize;
+    color: #FFF;
+    text-align: left;
+    line-height: 1;
+    white-space: nowrap;
+  }
 `
 
-const Bold = styled.b`
+const Number = styled.span`
   font-weight: 600;
   margin-right: 4px;
+  
+  @media ${device.tablet} {
+    font-size: 20px;
+    font-family: ${props => props.theme.fonts.roboto};
+    font-weight: 300;
+    margin-right: 8px;
+    color: ${props => props.theme.pallete.textOffset};
+  }
 `
 
 export default function Header() {
@@ -159,25 +192,25 @@ export default function Header() {
         <NavMenu $isActive={menuActive}>
           <NavItem $isActive={true}>
             <NavLink>
-              <Bold>
+              <Number>
                 01
-              </Bold>
+              </Number>
               início
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink>
-              <Bold>
+              <Number>
                 02
-              </Bold>
+              </Number>
               sobre
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink>
-              <Bold>
+              <Number>
                 03
-              </Bold>
+              </Number>
               projetos
             </NavLink>
           </NavItem>
