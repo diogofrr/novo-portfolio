@@ -3,46 +3,35 @@ import { device } from "./device"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import srcImageDecoration from './assets/decoration.svg'
+import SideIcons from "./components/SideIcons"
+import Experiences from "./components/Experiences"
 
-interface ImageDecorationProps {
-  $right?: string
-  $left?: string
-  $top?: string
-  $bottom?: string
-}
-
-const Container = styled.div`
-  padding: 16px 140px;
-
-  @media ${device.laptopL} {
-    padding: 16px 70px;
-  }
-
-  @media ${device.laptop} {
-    padding: 8px 35px;
-  }
-
-  @media ${device.mobileL} {
-    padding: 8px 17.5px;
-  }
-`
-
-const ImageDecoration = styled.img<ImageDecorationProps>`
+const ImageDecoration = styled.img`
   position: absolute;
-  right: ${props => props.$right ?? ''};
-  top: ${props => props.$top ?? ''};
-  left: ${props => props.$left ?? ''};
-  bottom: ${props => props.$bottom ?? ''};
+  top: 650px;
+  left: 0;
   z-index: 1;
+  
+  @media ${device.laptop} {
+    top: 560px;
+    width: 200px;
+  }
+
+  @media ${device.tablet} {
+    top: 460px;
+    width: 150px;
+  }
 `
 
 function App() {
   return (
-    <Container>
+    <>
+      <SideIcons showInMobile={false} showInDesktop={true} />
       <Header />
       <Hero />
-      <ImageDecoration src={srcImageDecoration} $left="0" $top="650px" />
-    </Container>
+      <ImageDecoration src={srcImageDecoration} />
+      <Experiences />
+    </>
   )
 }
 

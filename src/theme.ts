@@ -7,6 +7,7 @@ const theme = {
     border: '#E3F6F5',
     textOffset: '#2D334A',
     text: '#272343',
+    decoration: '#43A9A3'
   },
   fonts: {
     playFair: "'Playfair Display', serif",

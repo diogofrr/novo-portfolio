@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { device } from '../device'
 
 import { VerifiedIcon } from './Icons'
 import MenuHamburguerIcon from './MenuHamburguerIcon'
+import SideIcons from './SideIcons'
 
 interface NavItemProps {
   $isActive?: boolean
@@ -58,6 +59,19 @@ const HeaderContent = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px 140px 0 140px;
+
+  @media ${device.laptopL} {
+    padding: 16px 70px 0 70px;
+  }
+
+  @media ${device.laptop} {
+    padding: 8px 35px 0 35px;
+  }
+
+  @media ${device.mobileL} {
+    padding: 8px 17.5px 0 17.5px;
+  }
 `
 const Nav = styled.nav<NavProps>`  
   @media (${device.tablet}) {
@@ -72,6 +86,7 @@ const Nav = styled.nav<NavProps>`
     top: 0;
     right: 0;
     background-color: #000000;
+    overflow: hidden;
   }
 `
 
@@ -95,19 +110,24 @@ const NavMenu = styled.ul<NavMenuProps>`
 `
 const NavItem = styled.li<NavItemProps>`  
   position: relative;
+  cursor: pointer;
 
   &:after {
     content: "";
-    display: ${props => props?.$isActive ? 'block' : 'none'};
     height: 5px;
-    background-color: ${props => props.theme.pallete.primary};
+    background-color: ${props => props.$isActive ? props.theme.pallete.primary : props.theme.pallete.textOffset };
     position: absolute;
     left: 1.25rem;
     right: 1.25rem;
     bottom: -2px;
     transform-origin: 0 50%;
-    transition: transform .3s cubic-bezier(.86, 0, .07, 1);
-    animation: ${surge} 0.3s ease-in;
+    transition: transform 0.3s cubic-bezier(0, 0.29, 0.99, 0.58);
+    transform: ${props => props.$isActive ? 'scaleX(1)' : 'scaleX(0)'};
+    animation: ${props => props.$isActive && (css`${surge} 0.3s linear`)};
+  }
+
+  &:hover:after {
+    transform: scaleX(1); 
   }
 
   @media ${device.tablet} {
@@ -181,7 +201,7 @@ export default function Header() {
 
   return (
     <HeaderContent>
-      <LogoContainer href="https://google.com">
+      <LogoContainer href="https://linkedin.com/in/diogohfrr" target="_blank">
         <LogoImg />
         <LogoText>
           diogofrr
@@ -215,6 +235,7 @@ export default function Header() {
             </NavLink>
           </NavItem>
         </NavMenu>
+        <SideIcons showInMobile={true} showInDesktop={false} />
       </Nav>
       <MenuHamburguerIcon isActive={menuActive} onClick={handleChangeMenuState} />
     </HeaderContent>

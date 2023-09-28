@@ -10,7 +10,22 @@ const HeroSection = styled.section`
   flex-wrap: nowrap;
   width: 100%;
   min-height: 460px;
-  padding: 140px 0 170px 0;
+  padding: 140px 140px 170px 140px;
+
+  @media ${device.laptopL} {
+    padding-right: 70px;
+    padding-left: 70px;
+  }
+
+  @media ${device.laptop} {
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+
+  @media ${device.mobileL} {
+    padding-right: 17.5px;
+    padding-left: 17.5px;
+  }
 `
 
 const HeroSubtitle = styled.p`
