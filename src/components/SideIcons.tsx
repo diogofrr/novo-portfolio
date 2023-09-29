@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { device } from "../device";
+import { device, size } from "../device";
 import myCDoc from "../assets/Curriculo_Diogo_Javascript.pdf"
 
 interface SideIconsProps {
@@ -30,6 +30,10 @@ const IconsContainer = styled.div<IconsContainerProps>`
     margin-right: -50%;
     transform: translate(-50%, -50%);
     gap: 16px;
+  }
+
+  @media (max-height: 500px) and (min-width: ${size.tablet}) {
+    display: none;
   }
 `
 

@@ -5,6 +5,8 @@ import Hero from "./components/Hero"
 import srcImageDecoration from './assets/decoration.svg'
 import SideIcons from "./components/SideIcons"
 import Experiences from "./components/Experiences"
+import Knowlegdes from "./components/Knowlegdes"
+import Footer from "./components/Footer"
 
 const ImageDecoration = styled.img`
   position: absolute;
@@ -31,6 +33,8 @@ function App() {
       <Hero />
       <ImageDecoration src={srcImageDecoration} />
       <Experiences />
+      <Knowlegdes />
+      <Footer />
     </>
   )
 }

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { device } from "../device";
+import Title from "./UI/title";
+import Text from "./UI/Text";
 
 const Container = styled.section`
   background-color: ${(props) => props.theme.pallete.border};
@@ -19,24 +21,6 @@ const Container = styled.section`
   @media ${device.mobileL} {
     padding-right: 17.5px;
     padding-left: 17.5px;
-  }
-`;
-
-const Title = styled.h2`
-  color: ${(props) => props.theme.pallete.text};
-  font-family: ${(props) => props.theme.fonts.playFair};
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-bottom: 48px;
-
-  @media ${device.tablet} {
-    font-size: 28px;
-  }
-
-  @media ${device.mobileL} {
-    font-size: 24px;
   }
 `;
 
@@ -103,23 +87,13 @@ const ExpTitle = styled.p`
   }
 `;
 
-const ExpDescription = styled.p`
-  color: ${(props) => props.theme.pallete.text};
-  font-family: ${(props) => props.theme.fonts.roboto};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  max-width: 700px;
-
-  @media ${device.mobileL} {
-    font-size: 12px;
-  }
-`;
-
 
 const TimeLineContent = styled.div`
   margin-left: 16px;
+`
+
+const TextBox = styled.div`
+  max-width: 600px;
 `
 
 export default function Experiences() {
@@ -132,13 +106,15 @@ export default function Experiences() {
             Nov de 2021 - Atual
           </ExpTime>
           <ExpTitle>ASOEC - DESENVOLVEDOR FRONT-END</ExpTitle>
-          <ExpDescription>
-            Na função de desenvolvedor front-end, sou responsável por conceber e
-            implementar interfaces e funcionalidades para dois sistemas distintos.
-            Um deles, um projeto novo, é desenvolvido com tecnologias modernas,
-            incluindo Next.js, Material UI, TypeScript e NextAuth, enquanto o
-            outro é um sistema legado que utiliza Zend Framework e jQuery.
-          </ExpDescription>
+          <TextBox>
+            <Text>
+              Na função de desenvolvedor front-end, sou responsável por conceber e
+              implementar interfaces e funcionalidades para dois sistemas distintos.
+              Um deles, um projeto novo, é desenvolvido com tecnologias modernas,
+              incluindo Next.js, Material UI, TypeScript e NextAuth, enquanto o
+              outro é um sistema legado que utiliza Zend Framework e jQuery.
+            </Text>
+          </TextBox>
         </TimeLineContent>
       </ExperiencesContainer>
     </Container>
