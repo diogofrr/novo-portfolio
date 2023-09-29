@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "../device";
 import theme from '../theme';
 import { useState } from "react";
-import Title from "./UI/title";
+import Title from "./UI/Title";
 import Text from "./UI/Text";
 
 const Container = styled.section`

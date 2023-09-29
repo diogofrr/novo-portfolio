@@ -1,7 +1,7 @@
 import { useReducer, createContext, RefObject } from 'react'
 import { initialState } from './data'
 import { reducer } from './reducer';
-import actions from './Actions';
+import actions from './actions';
 
 interface ContextData {
   state: typeof initialState;
