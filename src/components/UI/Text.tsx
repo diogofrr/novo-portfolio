@@ -12,6 +12,10 @@ const Text = styled.p`
   @media ${device.laptop} {
     margin-bottom: 48px;
   }
+
+  @media ${device.mobileL} {
+    font-size: 12px;
+  }
 `
 
 export default Text;

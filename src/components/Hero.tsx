@@ -11,15 +11,17 @@ const HeroSection = styled.section`
   width: 100%;
   min-height: 460px;
   padding: 140px 140px 170px 140px;
+  margin-top: 80px;
 
   @media ${device.laptopL} {
     padding-right: 70px;
     padding-left: 70px;
+    margin-top: 72px;
   }
 
   @media ${device.laptop} {
     padding-right: 35px;
-    padding-left: 35px;
+    margin-top: 64px;
   }
 
   @media ${device.mobileL} {
@@ -94,7 +96,7 @@ const HeroText = styled.p`
 
 export default function Hero() {
   return (
-    <HeroSection>
+    <HeroSection id="c-hero">
       <HeroTitle>
         DESENVOLVEDOR FRONT-END
       </HeroTitle>

@@ -7,6 +7,7 @@ import SideIcons from "./components/SideIcons"
 import Experiences from "./components/Experiences"
 import Knowlegdes from "./components/Knowlegdes"
 import Footer from "./components/Footer"
+import Projects from "./components/Projects"
 
 const ImageDecoration = styled.img`
   position: absolute;
@@ -31,9 +32,10 @@ function App() {
       <SideIcons showInMobile={false} showInDesktop={true} />
       <Header />
       <Hero />
-      <ImageDecoration src={srcImageDecoration} />
+      <ImageDecoration src={srcImageDecoration.toString()} />
       <Experiences />
       <Knowlegdes />
+      <Projects />
       <Footer />
     </>
   )

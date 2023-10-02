@@ -55,22 +55,26 @@ const LogoContainer = styled.a`
 
 const HeaderContent = styled.header`
   width: 100%;
-  height: 64px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 140px 0 140px;
+  padding: 16px 140px 16px 140px;
+  position: fixed;
+  background-color: #FFF;
+  z-index: 100;
+  top: 0;
 
   @media ${device.laptopL} {
-    padding: 16px 70px 0 70px;
+    padding: 16px 70px 16px 70px;
   }
 
   @media ${device.laptop} {
-    padding: 8px 35px 0 35px;
+    padding: 8px 35px 8px 35px;
   }
 
   @media ${device.mobileL} {
-    padding: 8px 17.5px 0 17.5px;
+    padding: 8px 17.5px 8px 17.5px;
   }
 `
 const Nav = styled.nav<NavProps>`  
@@ -115,7 +119,9 @@ const NavItem = styled.li<NavItemProps>`
   &:after {
     content: "";
     height: 5px;
-    background-color: ${props => props.$isActive ? props.theme.pallete.primary : props.theme.pallete.textOffset };
+    // Lógica para o cenário em que há paginação
+    /* background-color: ${props => props.$isActive ? props.theme.pallete.primary : props.theme.pallete.textOffset }; */
+    background-color: ${props => props.theme.pallete.primary};
     position: absolute;
     left: 1.25rem;
     right: 1.25rem;
@@ -156,7 +162,7 @@ const NavLink = styled.a`
   text-transform: lowercase;
   color: ${props => props.theme.pallete.text};
   transition: color .2s linear;
-
+  text-decoration: none;
 
   font-family: ${props => props.theme.fonts.roboto};
   font-size: 16px;
@@ -210,8 +216,8 @@ export default function Header() {
       </LogoContainer>
       <Nav $isActive={menuActive}>
         <NavMenu $isActive={menuActive}>
-          <NavItem $isActive={true}>
-            <NavLink>
+          <NavItem>
+            <NavLink onClick={() => setMenuActive(false)} href="#c-hero">
               <Number>
                 01
               </Number>
@@ -219,7 +225,7 @@ export default function Header() {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>
+            <NavLink onClick={() => setMenuActive(false)} href="#c-experiences">
               <Number>
                 02
               </Number>
@@ -227,7 +233,7 @@ export default function Header() {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>
+            <NavLink onClick={() => setMenuActive(false)} href="#c-projects">
               <Number>
                 03
               </Number>

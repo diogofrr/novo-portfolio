@@ -3,4 +3,21 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  scroll-margin: 80px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #43A9A3;
+  border-radius: 10px;
 }
