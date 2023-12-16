@@ -2,11 +2,11 @@ import "styled-components"
 
 const theme = {
   pallete: {
-    primary: '#FF9D00',
-    secondary: '#BAE8E8',
-    border: '#E3F6F5',
-    textOffset: '#2D334A',
-    text: '#272343',
+    primary: '#FF335F',
+    secondary: '#A5E8E4',
+    border: '#ECFFFE',
+    textOffset: '#767676',
+    text: '#373A3C',
     decoration: '#43A9A3'
   },
   fonts: {

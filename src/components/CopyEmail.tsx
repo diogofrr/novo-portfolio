@@ -96,7 +96,7 @@ export default function CopyEmail() {
       <CopyEmailContent>
         ddiogof20@gmail.com
       </CopyEmailContent>
-      <CopyEmailButton type="button" onClick={handleCopyEmail}>
+      <CopyEmailButton type="button" onClick={handleCopyEmail} aria-label="Copiar email">
         <DuplicateIcon width={20} height={20} />
       </CopyEmailButton>
     </CopyEmailContainer>

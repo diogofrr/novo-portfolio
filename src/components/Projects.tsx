@@ -13,6 +13,9 @@ import fetiD from '../assets/feti-xl.svg';
 import styled from "styled-components"
 import { device } from "../device";
 import Title from "./UI/Title";
+import { SlideFromLeftDiv } from './UI/Animation';
+import { useRef } from 'react';
+import { useObserver } from '../hooks/useObserver';
 
 interface DesktopVersionProps {
   $src: string
@@ -134,6 +137,10 @@ const MobileVersion = styled.div<MobileVersionProps>`
 `;
 
 export default function Projects() {
+  const ref = useRef(null);
+  const observer = useObserver(ref);
+
+
   const projects = [{
     name: 'exercicio-crud',
     href: 'https://github.com/diogofrr/crud-firebase.git',
@@ -160,7 +167,10 @@ export default function Projects() {
   }]
 
   return (
-    <Container id="c-projects">
+    <Container id="c-projects" ref={ref}>
+    {observer && (
+      <SlideFromLeftDiv>
+
       <Title $textAlign="center">
         Projetos
       </Title>
@@ -179,6 +189,8 @@ export default function Projects() {
         </Project>
       ))}
       </ProjectsContainer>
+    </SlideFromLeftDiv>
+    )}
     </Container>
   )
 }

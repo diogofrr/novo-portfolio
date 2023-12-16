@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { device } from '../device'
 import CopyEmail from './CopyEmail'
+import { SlideFromBottomDiv } from './UI/Animation'
+import { useRef } from 'react'
+import { useObserver } from '../hooks/useObserver'
 
 const HeroSection = styled.section`
   display: flex;
@@ -14,19 +17,17 @@ const HeroSection = styled.section`
   margin-top: 80px;
 
   @media ${device.laptopL} {
-    padding-right: 70px;
-    padding-left: 70px;
+    padding: 140px 70px 140px 70px;
     margin-top: 72px;
   }
 
   @media ${device.laptop} {
-    padding-right: 35px;
+    padding: 140px 35px 140px 35px;
     margin-top: 64px;
   }
 
   @media ${device.mobileL} {
-    padding-right: 17.5px;
-    padding-left: 17.5px;
+    padding: 140px 17.5px 140px 17.5px;
   }
 `
 
@@ -37,10 +38,9 @@ const HeroSubtitle = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  order: -1;
 
   @media ${device.laptop} {
-    font-size: 16px;
+    font-size: 18px;
     max-width: 500px;
   }
 
@@ -54,9 +54,11 @@ const HeroTitle = styled.h1 `
   font-weight: 700;
   line-height: normal;
   max-width: 1100px;
+  margin-top: 8px;
   margin-bottom: 16px;
 
   @media ${device.laptop} {
+    margin-top: 0;
     font-size: 72px;
     max-width: 500px;
   }
@@ -95,18 +97,25 @@ const HeroText = styled.p`
 `
 
 export default function Hero() {
+  const ref = useRef(null)
+  const observer = useObserver(ref)
+
   return (
-    <HeroSection id="c-hero">
-      <HeroTitle>
-        DESENVOLVEDOR FRONT-END
-      </HeroTitle>
-      <HeroSubtitle>
-        OLÁ, ME CHAMO DIOGO E SOU UM
-      </HeroSubtitle>
-      <HeroText>
-        Atuo há 1 ano como desenvolvedor e minhas principais ferramentas são React, Typescript e NextJS.
-      </HeroText>
-      <CopyEmail />
+    <HeroSection id="c-hero" ref={ref}>
+      {observer && (
+        <SlideFromBottomDiv>
+          <HeroSubtitle>
+            OLÁ, ME CHAMO DIOGO E SOU UM
+          </HeroSubtitle>
+          <HeroTitle>
+            DESENVOLVEDOR FRONT-END
+          </HeroTitle>
+          <HeroText>
+            Atuo há 1 ano como desenvolvedor e minhas principais ferramentas são React, Typescript e NextJS.
+          </HeroText>
+          <CopyEmail />
+        </SlideFromBottomDiv>
+      )}
     </HeroSection>
   )
 }

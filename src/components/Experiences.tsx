@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { device } from "../device";
 import Title from "./UI/Title";
 import Text from "./UI/Text";
+import { useObserver } from "../hooks/useObserver";
+import { useRef } from "react";
+import { SlideFromLeftDiv } from "./UI/Animation";
 
 const Container = styled.section`
   background-color: ${(props) => props.theme.pallete.border};
   width: 100%;
   padding: 32px 140px;
+  min-height: 340px;
 
   @media ${device.laptopL} {
     padding-right: 70px;
@@ -97,26 +101,33 @@ const TextBox = styled.div`
 `
 
 export default function Experiences() {
+  const ref = useRef(null)
+  const observer = useObserver(ref)
+
   return (
-    <Container id="c-experiences">
-      <Title>Experiências</Title>
-      <ExperiencesContainer>
-        <TimeLineContent>
-          <ExpTime>
-            Nov de 2021 - Atual
-          </ExpTime>
-          <ExpTitle>ASOEC - DESENVOLVEDOR FRONT-END</ExpTitle>
-          <TextBox>
-            <Text>
-              Na função de desenvolvedor front-end, sou responsável por conceber e
-              implementar interfaces e funcionalidades para dois sistemas distintos.
-              Um deles, um projeto novo, é desenvolvido com tecnologias modernas,
-              incluindo Next.js, Material UI, TypeScript e NextAuth, enquanto o
-              outro é um sistema legado que utiliza Zend Framework e jQuery.
-            </Text>
-          </TextBox>
-        </TimeLineContent>
-      </ExperiencesContainer>
+    <Container id="c-experiences" ref={ref}>
+      {observer && (
+        <SlideFromLeftDiv>
+          <Title>Experiências</Title>
+          <ExperiencesContainer>
+            <TimeLineContent>
+              <ExpTime>
+                Nov de 2021 - Atual
+              </ExpTime>
+              <ExpTitle>ASOEC - DESENVOLVEDOR FRONT-END</ExpTitle>
+              <TextBox>
+                <Text>
+                  Na função de desenvolvedor front-end, sou responsável por conceber e
+                  implementar interfaces e funcionalidades para dois sistemas distintos.
+                  Um deles, um projeto novo, é desenvolvido com tecnologias modernas,
+                  incluindo Next.js, Material UI, TypeScript e NextAuth, enquanto o
+                  outro é um sistema legado que utiliza Zend Framework e jQuery.
+                </Text>
+              </TextBox>
+            </TimeLineContent>
+          </ExperiencesContainer>
+        </SlideFromLeftDiv>
+      )}
     </Container>
   );
 }

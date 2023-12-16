@@ -24,7 +24,7 @@ const surge = keyframes`
   100% { transform: scaleX(1) }
 `
 
-const LogoImg = styled.div`
+const LogoImg = styled.img`
   width: 48px;
   height: 48px;
   border-radius: 100%;
@@ -208,7 +208,7 @@ export default function Header() {
   return (
     <HeaderContent>
       <LogoContainer href="https://linkedin.com/in/diogohfrr" target="_blank">
-        <LogoImg />
+        <LogoImg src="https://avatars.githubusercontent.com/u/104373811?v=4" alt="Foto de Diogo Henrique Ferreira" />
         <LogoText>
           diogofrr
         </LogoText>
