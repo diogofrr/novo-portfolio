@@ -52,24 +52,26 @@ const HeroTitle = styled.h1 `
   font-size: 96px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
+  line-height: 116px;
   max-width: 1100px;
-  margin-top: 8px;
   margin-bottom: 16px;
 
   @media ${device.laptop} {
     margin-top: 0;
     font-size: 72px;
+    line-height: 80px;
     max-width: 500px;
   }
 
   @media ${device.tablet} {
     font-size: 40px;
+    line-height: 48px;
     max-width: 400px;
   }
 
   @media ${device.mobileL} {
     font-size: 28px;
+    line-height: 36px;
     max-width: 300px;
   }
 `
@@ -111,7 +113,7 @@ export default function Hero() {
             DESENVOLVEDOR FRONT-END
           </HeroTitle>
           <HeroText>
-            Atuo há 1 ano como desenvolvedor e minhas principais ferramentas são React, Typescript e NextJS.
+            Atuo há 2 anos como desenvolvedor e minhas principais ferramentas são React, Typescript e NextJS.
           </HeroText>
           <CopyEmail />
         </SlideFromBottomDiv>
